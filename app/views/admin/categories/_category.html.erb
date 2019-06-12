@@ -1,0 +1,14 @@
+<tr>
+  
+  
+  <td>
+    <%= category.name %>
+    
+  </td>
+
+  
+  <td>
+    
+    <%=Product.where("category_id =?",category.id).count%>
+  </td>
+</tr>
