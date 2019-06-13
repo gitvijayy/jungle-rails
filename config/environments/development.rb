@@ -14,7 +14,28 @@ Rails.application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+ 
+  
+  # config.action_mailer.delivery_method = :sendmail
+# Defaults to:
+# config.action_mailer.sendmail_settings = {
+#   location: '/usr/sbin/sendmail',
+#   arguments: '-i'
+# }
+# config.action_mailer.perform_deliveries = true
+ config.action_mailer.raise_delivery_errors = false
+# ActionMailer::Base.smtp_settings = {
+#   address:        'smtp.localhost:3000', # default: localhost
+#   port:           '25',                  # default: 25
+#   user_name:      'username',
+#   password:       'password',
+#   authentication: :plain                 # :plain, :login or :cram_md5
+# }
+
+
+
+
+  
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
