@@ -45,19 +45,8 @@
             <%= fa_icon "shopping-cart" %> My Cart (<%= cart.size %>)
           <% end %>
         </li>
+       <%= render 'layouts/session' %>
 
-         <li>
-          <%= link_to new_user_path do %>
-            <%= fa_icon "sign-in" %> Login 
-            
-          <% end %>
-        </li>
-        <li>
-          <%= link_to new_user_path do %>
-           
-            <%= fa_icon "sign-in" %> Register
-          <% end %>
-        </li>
       </ul>
     </div>
   </div>
