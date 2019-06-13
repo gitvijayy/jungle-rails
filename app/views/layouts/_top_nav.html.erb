@@ -39,12 +39,13 @@
             <li><%= link_to 'Categories',  [:admin, :categories] %></li>
           </ul>
         </li>
-       
+       <%if cart.size > 0%>
         <li>
           <%= link_to cart_path do %>
             <%= fa_icon "shopping-cart" %> My Cart (<%= cart.size %>)
           <% end %>
         </li>
+        <% end %>
        <%= render 'layouts/session' %>
 
       </ul>
