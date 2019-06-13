@@ -44,6 +44,7 @@ class UsersController < ApplicationController
   else
     redirect_to '/register'
   end
+  
   end
 
   # PATCH/PUT /users/1
