@@ -38,13 +38,14 @@ class UsersController < ApplicationController
     # end
 
     # @user = User.new(user_params)
+    
   if @user.save
     session[:user_id] = @user.id
-    redirect_to '/'
+    redirect_to '/', notice:'Successfully Registered'
   else
-    redirect_to '/register'
+    render :new
   end
-  
+
   end
 
   # PATCH/PUT /users/1

@@ -35,6 +35,7 @@ class SessionsController < ApplicationController
     #     format.json { render json: @session.errors, status: :unprocessable_entity }
     #   end
     # end
+    
     @user = User.find_by_email(params[:email])
     # If the user exists AND the password entered is correct.
     if @user && @user.authenticate(params[:password])
@@ -44,7 +45,7 @@ class SessionsController < ApplicationController
       redirect_to '/'
     else
     # If user's login doesn't work, send them back to the login form.
-      redirect_to '/login'
+      render :new
     end
   end
 

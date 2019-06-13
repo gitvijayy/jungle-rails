@@ -1,10 +1,8 @@
 <%= form_for @user ,:html => {:class => 'well'}  do |f|  %>
   <% if f.object.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(f.errors.count, "error") %> prohibited this user from being saved:</h2>
-
       <ul>
-      <% f.errors.full_messages.each do |message| %>
+      <% f.object.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
