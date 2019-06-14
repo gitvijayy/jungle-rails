@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   def show_order(order_id)
   @show_order = LineItem.where(order_id: order_id).map {|product| { product:Product.where(id: product.product_id).all,
   quantity:product.quantity,item_price: product.item_price.cents/100,total_price:product.total_price.cents/100   }}
-    
+  
   end
   helper_method :show_order
   # helper_method :enhanced_cart
