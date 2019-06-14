@@ -5,7 +5,13 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @product_rating = 2
+    @empty_stars = blank_stars
     @product = Product.find params[:id]
   end
+
+  def blank_stars
+    5 - @product_rating.to_i
+end
 
 end
