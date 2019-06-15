@@ -31,8 +31,6 @@ More information in their docs: <https://stripe.com/docs/testing#cards>
 
 !["main"](https://github.com/gitvijayy/jungle-rails/blob/master/docs/main.png?raw=true)
 
-!["product"](https://github.com/gitvijayy/jungle-rails/blob/master/docs/main.png?raw=true)
+!["product"](https://github.com/gitvijayy/jungle-rails/blob/master/docs/product.png?raw=true)
 
-!["cart"](https://github.com/gitvijayy/jungle-rails/blob/master/docs/product.png?raw=true)
-
-
+!["cart"](https://github.com/gitvijayy/jungle-rails/blob/master/docs/cart.png?raw=true)
