@@ -35,7 +35,7 @@
 
        
     <div  >
-      <%= form_for [@product, @review] do |form| %>
+      <%= form_for [@product,@review] do |form| %>
 
         <% if form.object.errors.any? %>
           <div class="alert alert-danger">
@@ -51,9 +51,9 @@
         
 
         <div class="form-group" >
-        <%= form.number_field :product_id, class: "review-product-id" %>
         
-          <%= form.label 'Rating' %>
+        
+          
        <%= form.label :rating %>
           <%= form.select :rating, Review::RATING_NUMBER  %>
 

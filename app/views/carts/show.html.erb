@@ -33,7 +33,6 @@
     </table>
   </div>
  
-
   <div class="row">
     <div class="col-xs-12">
       <%= form_tag orders_path do %>
@@ -42,15 +41,16 @@
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
           data-amount="<%= cart_subtotal_cents %>"
           
-          data-name="<%= current_user.first_name %>"
-          data-description="<%= current_user.first_name %>'s Jungle Order"
+          data-name="<%= current_user ? current_user.first_name : 'Guest' %>"
+          data-description="<%= current_user ? current_user.first_name : 'Guest' %>'s Jungle Order"
           data-locale="auto"
-          data-email=<%= current_user.email %>
+          data-email=<%= current_user ? current_user.email : 'Guest' %>
           data-currency="cad">
           
         </script>
-      <% end %>
+      <% end %>     
     </div>
   </div>
+
 
 </section>

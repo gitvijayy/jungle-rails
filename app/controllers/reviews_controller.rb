@@ -1,7 +1,5 @@
 class ReviewsController < ApplicationController
 
-
-
   def create
 @review = Review.create(review_params)
     @review.product_id = params[:product_id].to_i 
@@ -10,7 +8,7 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to :back, notice: 'Review created!' 
 else
-       render :back
+       redirect_to :back, notice: 'Review Error!'
      end
    
   end

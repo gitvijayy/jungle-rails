@@ -5,14 +5,11 @@ class ProductsController < ApplicationController
     
   end
 
-  def show
-    
-    
-    @product = Product.find params[:id]
+  def show  
+    @product =  Product.find(params[:id]) #Product.find params[:id]
     @product_rating = Review.where("product_id =?", params[:id]).average(:rating)
     @empty_stars = blank_stars
-     @review = Review.new(:product=>@product)
-     
+    @review=Review.new() 
   end
 
   def blank_stars

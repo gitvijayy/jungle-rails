@@ -21,13 +21,7 @@ class ApplicationController < ActionController::Base
   
   end
   helper_method :show_order
-  # helper_method :enhanced_cart
-
-  # def show_order(id)
-  #   @show_order = LineItem.where(id: id)
-  # end
-
-
+ 
   def cart_subtotal_cents
     
     enhanced_cart.map {|entry| entry[:product].price_cents * entry[:quantity]}.sum
@@ -45,7 +39,9 @@ class ApplicationController < ActionController::Base
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
+   
   end
+
    helper_method :current_user
     def authorize
     redirect_to '/login' unless current_user
