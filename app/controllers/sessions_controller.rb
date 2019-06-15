@@ -7,34 +7,12 @@ class SessionsController < ApplicationController
     @sessions = Session.all
   end
 
-  # GET /sessions/1
-  # GET /sessions/1.json
-  def show
-  end
-
-  # GET /sessions/new
   def new
     @session = Session.new
   end
 
-  # GET /sessions/1/edit
-  def edit
-  end
-
-  # POST /sessions
-  # POST /sessions.json
+  
   def create
-    # @session = Session.new(session_params)
-
-    # respond_to do |format|
-    #   if @session.save
-    #     format.html { redirect_to @session, notice: 'Session was successfully created.' }
-    #     format.json { render :show, status: :created, location: @session }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @session.errors, status: :unprocessable_entity }
-    #   end
-    # end
     
     @user = User.find_by_email(params[:email])
     # If the user exists AND the password entered is correct.
