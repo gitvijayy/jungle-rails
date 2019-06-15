@@ -1,30 +1,28 @@
-class ReviewsController < ApplicationController
+# frozen_string_literal: true
 
+class ReviewsController < ApplicationController
   def create
-@review = Review.create(review_params)
-    @review.product_id = params[:product_id].to_i 
+    @review = Review.create(review_params)
+    @review.product_id = params[:product_id].to_i
     @review.user = current_user
     @review.save
     if @review.save
-      redirect_to :back, notice: 'Review created!' 
-else
-       redirect_to :back, notice: 'Review Error!'
+      redirect_to :back, notice: 'Review created!'
+    else
+      redirect_to :back, notice: 'Review Error!'
      end
-   
   end
- def destroy
+
+  def destroy
     @review = Review.find params[:id]
     @review.destroy
     redirect_to :back, notice: 'Product deleted!'
-  end
+   end
 
   def review_params
     params.require(:review).permit(
-    
-     
-    :rating,
+      :rating,
       :description
     )
   end
-
 end

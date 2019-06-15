@@ -3,7 +3,6 @@
   <header class="page-header">
     <h1>My Cart</h1>
   </header>
-
   <div class="panel panel-default items">
     <table class="table table-bordered">
       <thead>
@@ -16,8 +15,7 @@
       </thead>
       <tbody>
         <%enhanced_cart.each do |item| %>
-          <%= render 'item', product: item[:product], quantity: item[:quantity].to_i %>
-          
+        <%= render 'item', product: item[:product], quantity: item[:quantity].to_i %>
         <% end %>
       </tbody>
       <tfoot>
@@ -32,23 +30,18 @@
       </tfoot>
     </table>
   </div>
- 
+
   <div class="row">
     <div class="col-xs-12">
       <%= form_tag orders_path do %>
-        <script
-          src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-amount="<%= cart_subtotal_cents %>"
-          
-          data-name="<%= current_user ? current_user.first_name : 'Guest' %>"
-          data-description="<%= current_user ? current_user.first_name : 'Guest' %>'s Jungle Order"
-          data-locale="auto"
-          data-email=<%= current_user ? current_user.email : 'Guest' %>
-          data-currency="cad">
-          
+      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="<%= Rails.configuration.stripe[:publishable_key] %>" data-amount="<%= cart_subtotal_cents %>"
+        data-name="<%= current_user ? current_user.first_name : 'Guest' %>"
+        data-description="<%= current_user ? current_user.first_name : 'Guest' %>'s Jungle Order" data-locale="auto"
+        data-email=<%= current_user ? current_user.email : 'Guest' %> data - currency="cad" >
+
         </script>
-      <% end %>     
+      <% end %>
     </div>
   </div>
 

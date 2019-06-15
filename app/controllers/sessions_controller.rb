@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SessionsController < ApplicationController
   # before_action :set_session, only: [:show, :edit, :update, :destroy]
 
@@ -11,18 +13,16 @@ class SessionsController < ApplicationController
     @session = Session.new
   end
 
-  
   def create
-    
     @user = User.find_by_email(params[:email])
     # If the user exists AND the password entered is correct.
-    if @user && @user.authenticate(params[:password])
-      # Save the user id inside the browser cookie. This is how we keep the user 
+    if @user&.authenticate(params[:password])
+      # Save the user id inside the browser cookie. This is how we keep the user
       # logged in when they navigate around our website.
       session[:user_id] = @user.id
       redirect_to '/'
     else
-    # If user's login doesn't work, send them back to the login form.
+      # If user's login doesn't work, send them back to the login form.
       render :new
     end
   end
@@ -55,13 +55,14 @@ class SessionsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    # def set_session
-    #   @session = Session.find(session[:user_id])
-    # end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def session_params
-      params.require(:session).permit(:new)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  # def set_session
+  #   @session = Session.find(session[:user_id])
+  # end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def session_params
+    params.require(:session).permit(:new)
+  end
 end

@@ -1,22 +1,22 @@
-  <li>
-<% if current_user %>
+<li>
+  <% if current_user %>
 
- <%= link_to  "/logout" do%> Logout <%= fa_icon "sign-out" %> 
-  
- <% end %>
- 
- </li>
- <% else %>
-         <li>
-          <%= link_to "/login" do %>
-            <%= fa_icon "sign-in" %> Login 
-            
-          <% end %>
-        </li>
-        <li>
-          <%= link_to "/register" do %>
-           
-            <%= fa_icon "user-plus" %> Register
-          <% end %>
-        </li>
-        <% end %>
+  <%= link_to  "/logout" do%> Logout <%= fa_icon "sign-out" %>
+
+  <% end %>
+
+</li>
+<% else %>
+<li>
+  <%= link_to "/login" do %>
+  <%= fa_icon "sign-in" %> Login
+
+  <% end %>
+</li>
+<li>
+  <%= link_to "/register" do %>
+
+  <%= fa_icon "user-plus" %> Register
+  <% end %>
+</li>
+<% end %>
