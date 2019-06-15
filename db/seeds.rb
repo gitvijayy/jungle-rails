@@ -132,5 +132,35 @@ cat3.products.create!({
   price: 2_483.75
 })
 
+Review.destroy_all
+
+cat1 = Product.find_or_create_by! name: 'Electric Chair'
+cat2 = Product.find_or_create_by! name: 'Red Bookshelf'
+
+cat1.reviews.create!({
+  user_id:  1,
+  description: "test review",
+  rating: 3
+})
+cat1.reviews.create!({
+  user_id:  1,
+  description: "test review",
+  rating: 1
+})
+cat1.reviews.create!({
+  user_id:  1,
+  description: "test review",
+  rating: 1
+})
+cat2.reviews.create!({
+  user_id:  1,
+  description: "test review",
+  rating: 3
+})
+cat2.reviews.create!({
+  user_id:  1,
+  description: "test review",
+  rating: 3
+})
 
 puts "DONE!"

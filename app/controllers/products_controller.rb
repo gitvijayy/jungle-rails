@@ -2,12 +2,17 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all.order(created_at: :desc)
+    
   end
 
   def show
-    @product_rating = 2
-    @empty_stars = blank_stars
+    
+    
     @product = Product.find params[:id]
+    @product_rating = Review.where("product_id =?", params[:id]).average(:rating)
+    @empty_stars = blank_stars
+     @review = Review.new(:product=>@product)
+     
   end
 
   def blank_stars

@@ -76,7 +76,9 @@ main section.categories-show {
   height: 100px;
   width: 100%;
 }
-
+.review-product-id {
+  display: none;
+}
 main section.products-show {
   .product-detail {
     img.main-img {

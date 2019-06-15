@@ -30,11 +30,12 @@
           <dd><%= @product.quantity %></dd>
           <dt>Price</dt>
           <dd><%= @product.price %></dd><br>
+          <%if current_user%> 
 <dd>
 
-        
+       
     <div  >
-      <%= form_for [:admin, @product] do |form| %>
+      <%= form_for [@product, @review] do |form| %>
 
         <% if form.object.errors.any? %>
           <div class="alert alert-danger">
@@ -50,28 +51,60 @@
         
 
         <div class="form-group" >
+        <%= form.number_field :product_id, class: "review-product-id" %>
+        
           <%= form.label 'Rating' %>
-          
-<select id="review_id" name="product_id">
-   <option value="1">1</option>
-   <option value="2">2</option>
-   <option value="3">3</option>
-   <option value="3">4</option>
-   <option value="3">5</option>
-</select>
+       <%= form.label :rating %>
+          <%= form.select :rating, Review::RATING_NUMBER  %>
+
 
           <%= form.text_area :description, class: 'review-text' %>
+           
         </div>
 
         <%= form.submit 'Submit Review / Rating', class: 'btn btn-primary' %>
       <% end %>
     
-  </div></dd>
-        </dl>
+  </div></dd> <%end%>      </dl>
        
       </div>
+
+
+
     </div>
 
+
+
   </article>
+
+
+<div>
+
+   <br> <br>
+<%@product.reviews.reverse_each do |review|%>
+<div class = "well" , style="display:flex;flex-direction:column;margin-left:10%;margin-right:10%">  
+ <h4>
+<%=review.user.first_name%>  <% review.rating.to_i.times do  %>
+ <span class="glyphicon glyphicon-star"></span>
+
+<% end %> 
+<%if review.user==current_user%>
+<%= link_to fa_icon('trash'),[@product,review] , class: 'btn btn-sm text-danger ', method: :delete, data: { confirm: "Are you sure?" } %>
+
+<%end%>
+ </h4> 
+<p><%=review.description%></p> 
+
+</div>      
+    <%end%>
+
+
+
+  </div>
+
+
+
+
+
 
 </section>
