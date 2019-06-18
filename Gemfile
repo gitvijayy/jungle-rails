@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 source 'https://rubygems.org'
 # ruby "~> 2.3.0"
 
@@ -31,12 +29,12 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'puma'
 
 gem 'bootstrap-sass', '~> 3.3.6'
-gem 'carrierwave'
-gem 'faker'
 gem 'font-awesome-rails'
 gem 'money-rails'
+gem 'carrierwave'
 gem 'rmagick'
 gem 'stripe'
+gem 'faker'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -45,8 +43,8 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'rspec-rails', '~> 3.5'
   gem 'byebug'
-  gem 'dotenv-rails'
   gem 'quiet_assets'
+  gem 'dotenv-rails'
 end
 
 group :development do

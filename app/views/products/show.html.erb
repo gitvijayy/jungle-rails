@@ -3,12 +3,12 @@
   <header class="page-header">
     <h1><%= link_to @product.category.name, @product.category %> &raquo; <%= @product.name %>
       &nbsp
-      <% @product_rating.to_i.times do  %>
-      <span class="glyphicon glyphicon-star"></span>
-      <% end %>
-      <% @empty_stars.times do %>
-      <span class="glyphicon glyphicon-star-empty"></span>
-      <% end %> </h1>
+    <% @product_rating.to_i.times do  %>
+ <span class="glyphicon glyphicon-star"></span>
+<% end %> 
+<% @empty_stars.times do %>
+ <span class="glyphicon glyphicon-star-empty"></span>
+<% end %> </h1>
 
   </header>
 
@@ -30,63 +30,81 @@
           <dd><%= @product.quantity %></dd>
           <dt>Price</dt>
           <dd><%= @product.price %></dd><br>
-          <%if current_user%>
-          <dd>
+          <%if current_user%> 
+<dd>
 
-            <div>
-              <%= form_for [@product,@review] do |form| %>
+       
+    <div  >
+      <%= form_for [@product,@review] do |form| %>
 
-              <% if form.object.errors.any? %>
-              <div class="alert alert-danger">
-                <strong>The following errors prevented saving:</strong>
-                <ul>
-                  <% form.object.errors.full_messages.each do |error| %>
-                  <li><%= error %></li>
-                  <% end %>
-                </ul>
-              </div>
+        <% if form.object.errors.any? %>
+          <div class="alert alert-danger">
+            <strong>The following errors prevented saving:</strong>
+            <ul>
+              <% form.object.errors.full_messages.each do |error| %>
+                <li><%= error %></li>
               <% end %>
-
-              <div class="form-group">
-
-                <%= form.label :rating %>
-                <%= form.select :rating, Review::RATING_NUMBER  %>
-
-
-                <%= form.text_area :description, class: 'form-control' %>
-
-              </div>
-
-              <%= form.submit 'Submit Review / Rating', class: 'btn btn-primary' %>
-              <% end %>
-
-            </div>
-          </dd> <%end%>
-        </dl>
-
-      </div>
-    </div>
-  </article>
-  <div>
-
-    <br> <br><br>
-    
-    <%@product.reviews.reverse_each do |review|%>
-    <div class="well all-reviews" >
-      <h4>
-        <%=review.user.first_name%> <% review.rating.to_i.times do  %>
-        <span class="glyphicon glyphicon-star"></span>
-
+            </ul>
+          </div>
         <% end %>
-        <%if review.user==current_user%>
-        <%= link_to fa_icon('trash'),[@product,review] , class: 'btn btn-sm text-danger ', method: :delete, data: { confirm: "Are you sure?" } %>
 
-        <%end%>
-      </h4>
-      <p><%=review.description%></p>
+        
+
+        <div class="form-group" >
+        
+        
+          
+       <%= form.label :rating %>
+          <%= form.select :rating, Review::RATING_NUMBER  %>
+
+
+          <%= form.text_area :description, class: 'review-text' %>
+           
+        </div>
+
+        <%= form.submit 'Submit Review / Rating', class: 'btn btn-primary' %>
+      <% end %>
+    
+  </div></dd> <%end%>      </dl>
+       
+      </div>
+
+
 
     </div>
+
+
+
+  </article>
+
+
+<div>
+
+   <br> <br>
+<%@product.reviews.reverse_each do |review|%>
+<div class = "well" , style="display:flex;flex-direction:column;margin-left:10%;margin-right:10%">  
+ <h4>
+<%=review.user.first_name%>  <% review.rating.to_i.times do  %>
+ <span class="glyphicon glyphicon-star"></span>
+
+<% end %> 
+<%if review.user==current_user%>
+<%= link_to fa_icon('trash'),[@product,review] , class: 'btn btn-sm text-danger ', method: :delete, data: { confirm: "Are you sure?" } %>
+
+<%end%>
+ </h4> 
+<p><%=review.description%></p> 
+
+</div>      
     <%end%>
+
+
+
   </div>
+
+
+
+
+
 
 </section>

@@ -1,7 +1,7 @@
-# frozen_string_literal: true
-
 class CartsController < ApplicationController
-  def show; end
+
+  def show
+  end
 
   def add_item
     product_id = params[:product_id].to_s
@@ -14,7 +14,7 @@ class CartsController < ApplicationController
     product_id = params[:product_id].to_s
     modify_cart_delta(product_id, -1)
     puts cart_subtotal_cents
-    cart_subtotal_cents == 0 ? (redirect_to :root) : (redirect_to :back)
+    cart_subtotal_cents == 0 ? (redirect_to :root) : (redirect_to :back) 
   end
 
   private
@@ -24,4 +24,5 @@ class CartsController < ApplicationController
     cart.delete(product_id) if cart[product_id] < 1
     update_cart cart
   end
+
 end

@@ -1,17 +1,16 @@
-# frozen_string_literal: true
-
 Rails.application.routes.draw do
-  get    '/register' => 'users#new'
-  get    '/login' => 'sessions#new'
-  post   '/login' => 'sessions#create'
+  get    '/register'  => 'users#new'
+  get    '/login'  => 'sessions#new'
+  post   '/login'   => 'sessions#create'
   # resources :sessions
   get '/logout' => 'sessions#destroy'
   resources :users
-
+  
+  
   root to: 'products#index'
 
-  resources :products, only: %i[index show] do
-    resources :reviews, only: %i[create destroy]
+  resources :products, only: [:index, :show] do 
+resources :reviews , only: [:create, :destroy]
   end
 
   resources :categories, only: [:show]
@@ -21,12 +20,12 @@ Rails.application.routes.draw do
     post   :remove_item
   end
 
-  resources :orders, only: %i[create show]
+  resources :orders, only: [:create, :show]
 
   namespace :admin do
     root to: 'dashboard#show'
-    resources :products, except: %i[edit update show]
-    resources :categories, only: %i[index new create]
+    resources :products, except: [:edit, :update, :show]
+    resources :categories, only: [:index, :new,:create]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

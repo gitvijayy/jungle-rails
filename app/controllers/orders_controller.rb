@@ -1,6 +1,5 @@
-# frozen_string_literal: true
-
 class OrdersController < ApplicationController
+
   def show
     @order = Order.find(params[:id])
   end
@@ -12,10 +11,11 @@ class OrdersController < ApplicationController
     if order.valid?
       empty_cart!
       mail_order(order)
-      # redirect_to order, notice: 'Your Order has been placed.'
+      #redirect_to order, notice: 'Your Order has been placed.'
     else
       redirect_to cart_path, flash: { error: order.errors.full_messages.first }
     end
+
   rescue Stripe::CardError => e
     redirect_to cart_path, flash: { error: e.message }
   end
@@ -29,10 +29,10 @@ class OrdersController < ApplicationController
 
   def perform_stripe_charge
     Stripe::Charge.create(
-      source: params[:stripeToken],
-      amount: cart_subtotal_cents,
+      source:      params[:stripeToken],
+      amount:      cart_subtotal_cents,
       description: "Khurram Virani's Jungle Order",
-      currency: 'cad'
+      currency:    'cad'
     )
   end
 
@@ -40,7 +40,7 @@ class OrdersController < ApplicationController
     order = Order.new(
       email: params[:stripeEmail],
       total_cents: cart_subtotal_cents,
-      stripe_charge_id: stripe_charge.id # returned by stripe
+      stripe_charge_id: stripe_charge.id, # returned by stripe
     )
 
     enhanced_cart.each do |entry|
@@ -54,15 +54,25 @@ class OrdersController < ApplicationController
       )
     end
     order.save!
-
+    
     order
   end
-
-  def mail_order(order)
-    respond_to do |format|
-      UserMailer.order_email(order).deliver_now
-
-      format.html { (redirect_to order, notice: 'Your Order has been placed.') }
+def mail_order(order)
+  
+  respond_to do |format|
+     
+        # Tell the UserMailer to send a welcome email after save
+        UserMailer.order_email(order).deliver_now
+ 
+        format.html { (redirect_to order, notice: 'Your Order has been placed.') }
+        
+        # format.json { render json: '@user', status: :created, location: @user }
+      # else
+      #   format.html { render action: 'new' }
+      #   format.json { render json: @user.errors, status: :unprocessable_entity }
+      # end
+      
     end
-    end
+  end
+
 end

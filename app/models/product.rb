@@ -1,6 +1,5 @@
-# frozen_string_literal: true
-
 class Product < ActiveRecord::Base
+ 
   monetize :price_cents, numericality: true
   mount_uploader :image, ProductImageUploader
 
@@ -12,4 +11,5 @@ class Product < ActiveRecord::Base
   validates :price, presence: true
   validates :quantity, presence: true
   validates :category, presence: true
+
 end

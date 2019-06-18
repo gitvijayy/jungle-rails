@@ -10,7 +10,7 @@
     <%= product.description %>
   </p>
   
-<p class ="rating">
+<p style="font-weight:bold">
 Rating: 
 <% Review.where("product_id =?",product.id).average("rating").to_i.times do  %>
  <span class="glyphicon glyphicon-star text-danger"></span>

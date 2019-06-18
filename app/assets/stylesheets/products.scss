@@ -26,17 +26,6 @@ main section.categories-show {
         display: block;
       }
 
-      .all-reviews {
-        display: flex;
-        flex-direction: column;
-        margin-left: 20%;
-        margin-right: 20%;
-      }
-
-      .rating {
-        font-weight: bold;
-      }
-
       footer {
         position: absolute;
         bottom: 0;
@@ -87,41 +76,8 @@ main section.categories-show {
   height: 100px;
   width: 100%;
 }
-
-.sign-up {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  .actions {
-  }
-  h2 {
-    width: 220px;
-    border-radius: 4px;
-    text-align: center;
-    height: 40px;
-  }
-}
-.login-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  h2 {
-    width: 260px;
-    border-radius: 4px;
-    text-align: center;
-    height: 40px;
-  }
-  .div-1 {
-    width: 260px;
-  }
-  .div-2 {
-    display: flex;
-    flex-direction: column;
-    input {
-      margin-bottom: 10%;
-      height: 40px;
-    }
-  }
+.review-product-id {
+  display: none;
 }
 main section.products-show {
   .product-detail {
