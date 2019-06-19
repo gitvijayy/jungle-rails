@@ -2,14 +2,15 @@ require 'rails_helper'
 require 'capybara/poltergeist'
 Capybara.default_driver = :poltergeist 
 
-RSpec.feature "Visitor navigates to home page", type: :feature, js: true do
+
+RSpec.feature "Product Details", type: :feature, js: true do
   pending "add some scenarios (or delete) #{__FILE__}"
 
 # SETUP
   before :each do
     @category = Category.create! name: 'Apparel'
 
-    10.times do |n|
+    1.times do |n|
       @category.products.create!(
   name:  Faker::Hipster.sentence(3),
   description: Faker::Hipster.paragraph(4),
@@ -21,14 +22,20 @@ RSpec.feature "Visitor navigates to home page", type: :feature, js: true do
   end
 
 
-  scenario "They see all products" do
-    # ACT
-    visit root_path
+  it "should go to product page" do
 
-    # DEBUG / VERIFY
-    save_screenshot
+  visit root_path
 
-     expect(page).to have_css 'article.product', count: 10
-  end
+  # sleep 5
+
+
+click_link(class: 'btn btn-default pull-right')
+sleep 10
+save_screenshot
+  # puts page.body
+  #<various content asserts on page currently commented out
+
+end
+
 
 end
